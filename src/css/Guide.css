@@ -1,0 +1,178 @@
+/* 전체 페이지 래퍼 */
+.mb-guide-page {
+  min-height: calc(100vh - 120px); /* 헤더/푸터 제외 높이 추정 */
+  padding: 40px 16px 60px;
+  background-color: #f9fafb;
+  display: flex;
+  justify-content: center;
+}
+
+.mb-guide-inner {
+  width: 100%;
+  max-width: 960px;
+}
+
+/* 상단 헤더 */
+.mb-guide-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.mb-guide-header p {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* 상단 네비게이션 (빠른 이동 메뉴) */
+.mb-guide-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.mb-guide-nav-link {
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  color: #111827;
+  text-decoration: none;
+}
+
+.mb-guide-nav-link:hover {
+  background-color: #f3f4f6;
+}
+
+/* 공통 섹션 박스 */
+.mb-guide-section {
+  background-color: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  padding: 20px 20px 18px;
+  margin-bottom: 16px;
+  position: relative; /* 위로가기 버튼 absolute 기준 */
+  scroll-margin-top: 80px; /* 상단 고정 헤더 여유 */
+}
+
+/* 섹션 제목 */
+.mb-guide-section h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 8px 0;
+  padding-right: 90px; /* 오른쪽 위로가기 버튼 자리 확보 */
+}
+
+/* 설명 텍스트 */
+.mb-guide-desc {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+/* 단계(ol) 스타일 */
+.mb-guide-steps {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mb-guide-steps li {
+  font-size: 14px;
+  color: #111827;
+}
+
+.mb-guide-steps li strong {
+  display: block;
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.mb-guide-steps li p {
+  margin: 0;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+/* 마지막 섹션 (추가 문의) */
+.mb-guide-section-last {
+  margin-top: 8px;
+}
+
+.mb-guide-contact {
+  margin-top: 4px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background-color: #f3f4f6;
+  font-size: 14px;
+  color: #111827;
+}
+
+.mb-guide-contact span {
+  font-weight: 600;
+}
+
+/* 위로가기 버튼 공통 스타일 */
+.mb-guide-top-btn {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  color: #6b7280;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* 섹션 우상단에 붙는 위로가기 버튼(섹션 바로 아래에 있는 경우만) */
+.mb-guide-section > .mb-guide-top-btn {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+}
+
+.mb-guide-top-btn:hover {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+/* 상단 헤더로 점프할 때 위치 조정 (고정 네비 높이만큼 여유) */
+.mb-guide-header {
+  scroll-margin-top: 80px;
+}
+
+/* 반응형 (모바일) */
+@media (max-width: 640px) {
+  .mb-guide-page {
+    padding: 24px 12px 40px;
+  }
+
+  .mb-guide-header h1 {
+    font-size: 20px;
+  }
+
+  .mb-guide-section {
+    padding: 18px 14px 14px;
+  }
+
+  .mb-guide-section h2 {
+    font-size: 16px;
+    padding-right: 70px; /* 모바일에서 버튼 자리 조금 줄이기 */
+  }
+
+  .mb-guide-section > .mb-guide-top-btn {
+    top: 12px;
+    right: 14px;
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+}

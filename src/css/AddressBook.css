@@ -1,0 +1,267 @@
+/* ===== AddressBook 기본 레이아웃 ===== */
+.ab-wrap {
+  max-width: 980px;
+  min-height: 600px;
+  margin: 0 auto;
+  padding: 16px 12px;
+  font-family: "Pretendard", "Noto Sans KR", system-ui, -apple-system, Segoe UI,
+    Roboto, sans-serif;
+  color: #1f2937; /* slate-800 */
+}
+
+/* 제목 + 우측 버튼 라인 */
+.ab-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.ab-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: #111827; /* slate-900 */
+}
+
+/* 상단 에러 배지 */
+.ab-error {
+  background: #fee2e2; /* red-100 */
+  color: #b91c1c; /* red-700 */
+  border: 1px solid #fecaca;
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+/* ===== 카드 컨테이너 ===== */
+.ab-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb; /* gray-200 */
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  /* 모바일에서 컬럼이 넘치면 가로 스크롤 허용 */
+  overflow-x: auto;
+}
+
+/* 헤더 영역 */
+.ab-head {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr 0.8fr;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  background: #f8fafc; /* slate-50 */
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 700;
+  color: #0f172a; /* slate-900 */
+}
+
+/* 본문 래퍼 */
+.ab-body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 데이터 로우 */
+.ab-row {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr 0.8fr;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-top: 1px solid #f1f5f9; /* slate-100 */
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.ab-row:hover {
+  background: #f9fafb; /* gray-50 */
+}
+
+/* 컬럼 공통 */
+.ab-col {
+  min-width: 0; /* 텍스트 ellipsis를 위해 */
+}
+
+/* 이름/이메일/액션 세부 */
+.ab-name {
+  font-weight: 600;
+  color: #111827;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ab-email {
+  color: #374151; /* gray-700 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ab-action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 빈 상태 */
+.ab-empty {
+  padding: 24px 16px;
+  color: #64748b; /* slate-500 */
+  text-align: center;
+}
+
+/* ===== 버튼들 ===== */
+
+/* 우측 상단 주요 버튼 (Gmail 열기) — 민트톤 */
+.ab-primary-btn {
+  appearance: none;
+  border: 1px solid #000000; /* 밝은 민트 */
+  background: #ffffff; /* 민트 파스텔 */
+  color: #124f37; /* 진한 초록티 */
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    background-color 0.12s ease, border-color 0.12s ease;
+}
+
+.ab-primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  background: #ffffff; /* 네비게이션바에 맞춘 톤 */
+  border-color: #030303;
+}
+
+.ab-primary-btn:active {
+  transform: translateY(0);
+}
+
+.ab-primary-btn:focus-visible {
+  outline: 3px solid #929292; /* mint focus ring */
+  outline-offset: 2px;
+}
+
+/* 각 행의 메일쓰기 버튼 — 아웃라인 민트 */
+.ab-mail-btn {
+  appearance: none;
+  border: 1.5px solid #a5d6b5;
+  background: #ffffff;
+  color: #0f5132; /* 짙은 그린 */
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.12s ease, transform 0.12s ease,
+    box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+.ab-mail-btn:hover {
+  background: #effaf4;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  border-color: #7fc6a0;
+}
+
+.ab-mail-btn:active {
+  transform: translateY(0);
+}
+
+.ab-mail-btn:focus-visible {
+  outline: 3px solid #a7f3d0;
+  outline-offset: 2px;
+}
+
+/* 검색 */
+.ab-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ab-search-input {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 8px 15px;
+  font-size: 15px;
+  outline: none;
+  background-color: #ffffff;
+}
+
+/*페이징 */
+/* 페이징 영역 전체 */
+.ab-pagination {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* 페이징 버튼 기본 스타일 */
+.ab-page-btn {
+  min-width: 32px;
+  padding: 6px 10px;
+  border-radius: 500px;
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease, transform 0.1s ease;
+}
+
+/* hover 시 */
+.ab-page-btn:hover {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+/* 현재 선택된 페이지 */
+.ab-page-btn.active {
+  background-color: #111827;
+  color: #ffffff;
+  border-color: #111827;
+  transform: translateY(-1px);
+}
+
+.ab-search-input:focus {
+  border-color: #0d7200;
+}
+
+/* ===== 반응형 ===== */
+
+/* 모바일: 가로 스크롤 대신 행 너비를 보장 (스크롤 가능) */
+@media (max-width: 720px) {
+  .ab-head,
+  .ab-row {
+    grid-template-columns: 1.2fr 1.8fr 0.9fr;
+    min-width: 640px; /* 컨텐츠가 줄바꿈으로 깨지지 않게 한 줄 폭 고정 */
+  }
+
+  .ab-title {
+    font-size: 1.2rem;
+  }
+
+  .ab-primary-btn {
+    padding: 8px 12px;
+    border-radius: 10px;
+  }
+}
+
+/* 더 작은 화면에서는 제목/버튼 줄 간격 여유 */
+@media (max-width: 420px) {
+  .ab-title-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .ab-primary-btn {
+    width: 100%;
+  }
+}

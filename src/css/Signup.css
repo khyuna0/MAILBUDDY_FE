@@ -1,0 +1,146 @@
+/* src/pages/Signup.css */
+
+/* ========== 토큰 ========== */
+:root {
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --bg: #ffffff;
+  --accent: #111827; /* 버튼/포커스 */
+  --error-text: #b91c1c;
+}
+
+/* ========== 레이아웃 ========== */
+.signup-container {
+  min-height: calc(100dvh - 64px);
+  display: grid;
+  align-content: start; /* 세로: 위쪽으로 붙임 */
+  justify-content: center; /* 가로: 가운데 유지 */
+  padding: 30px 16px;
+  background: #fafafa;
+  margin-top: 50px;
+}
+
+.signup-box {
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  padding: 28px;
+}
+
+.signup-box h2 {
+  margin: 0 0 8px;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--text);
+  letter-spacing: -0.2px;
+}
+.signup-box .helper {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ========== 에러 (텍스트만) ========== */
+.error-message {
+  color: var(--error-text);
+  font-weight: 700;
+  margin: 8px 0 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.field-error {
+  color: var(--error-text);
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: -2px;
+}
+
+/* ========== 폼: Flex column (순서 고정) ========== */
+.signup-form {
+  display: flex !important; /* ← Grid 대신 Flex 사용 */
+  flex-direction: column !important; /* 위→아래 */
+  gap: 12px;
+}
+
+/* 각 행은 세로로 쌓이게 */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* 인풋 */
+.signup-box input[type="text"],
+.signup-box input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease,
+    background 0.15s ease;
+}
+.signup-box input::placeholder {
+  color: #9ca3af;
+}
+.signup-box input:focus {
+  border-color: #c7c9ce;
+  box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.08);
+}
+
+/* ========== 버튼 영역: 항상 맨 아래 ========== */
+.actions {
+  display: flex; /* 가로로 두 버튼 */
+  gap: 8px;
+  margin-top: 8px;
+}
+.actions .btn {
+  flex: 1;
+}
+
+/* 버튼 공통 */
+.btn {
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 800;
+  font-size: 15px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn.solid {
+  background: var(--accent);
+  color: #fff;
+}
+.btn.solid:hover {
+  opacity: 0.94;
+}
+.btn.solid:active {
+  transform: translateY(1px);
+}
+.btn.ghost {
+  background: #fff;
+  color: var(--text);
+  border-color: var(--border);
+}
+.btn.ghost:hover {
+  background: #f9fafb;
+}
+
+/* ========== 반응형 ========== */
+@media (max-width: 420px) {
+  .signup-box {
+    padding: 22px;
+  }
+  .signup-box h2 {
+    font-size: 24px;
+  }
+}

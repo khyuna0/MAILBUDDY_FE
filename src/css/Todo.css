@@ -1,0 +1,256 @@
+/* ===========================
+   Todo 카드 전체 레이아웃
+   =========================== */
+
+.todo-card {
+  flex: 0 0 auto;
+}
+
+/* 상단 헤더 영역 (제목 + 월 표시) */
+.todo-head {
+  display: flex;
+  justify-content: space-between; /* 왼쪽: To-Do, 오른쪽: 날짜 */
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+/* "To-Do" 제목 */
+.todo-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* YYYY-MM 형식 날짜 */
+.todo-date {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* 로그인/권한 관련 안내 배너 */
+.todo-banner {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  border-radius: 999px;
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+/* "To-Do" 제목 + 연도-월 */
+.todo-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.todo-date {
+  font-size: 15px;
+  color: #1e1e1f;
+}
+
+/* ===========================
+   입력 영역
+   =========================== */
+
+.todo-input-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.todo-input {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.85rem;
+  outline: none;
+  background-color: #f9fafb;
+}
+
+.todo-input:focus {
+  border-color: #4f46e5;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.15);
+}
+
+.todo-input:disabled {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+}
+
+/* 버튼 줄 */
+.todo-button-row {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+/* 기본 Todo 버튼 스타일 */
+.todo-btn {
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #111827;
+}
+
+.todo-btn:hover:not(:disabled) {
+  background-color: #f3f4f6;
+}
+
+/* 파란색 기본 액션 버튼 */
+.todo-btn.primary {
+  background-color: #111827;
+  color: #ffffff;
+  border-color: #111827;
+}
+
+.todo-btn.primary:hover:not(:disabled) {
+  background-color: #1f2937;
+}
+
+/* 테두리만 있는 서브 버튼 */
+.todo-btn.ghost {
+  background-color: #ffffff;
+  color: #4b5563;
+}
+
+/* 버튼 비활성화 상태 */
+.todo-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* ===========================
+   목록 영역
+   =========================== */
+
+.todo-list {
+  flex: 1; /* ★ 남은 높이를 전부 사용 */
+  min-height: 0; /* ★ 오버플로우 될 때만 스크롤 */
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  overflow-y: auto; /* ★ To-Do 리스트 안에서만 스크롤 */
+}
+
+/* 할 일 없는 경우 */
+.todo-empty {
+  padding: 6px 2px;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+/* ===========================
+   TodoRow (개별 항목)
+   =========================== */
+
+.todo-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.todo-row:last-child {
+  border-bottom: none;
+}
+
+/* 체크된 항목 스타일 */
+.todo-row.done .todo-text {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+/* 체크박스 */
+.todo-check {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  accent-color: #4f46e5; /* 지원하는 브라우저에서 체크 색 */
+  cursor: pointer;
+}
+
+.todo-check:disabled {
+  cursor: not-allowed;
+}
+
+/* 편집용 input */
+.todo-edit {
+  flex: 1;
+  font-size: 0.85rem;
+  padding: 4px 6px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  outline: none;
+  background-color: #ffffff;
+}
+
+.todo-edit:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.15);
+}
+
+/* 텍스트 영역 (일반 모드) */
+.todo-text {
+  flex: 1;
+  font-size: 0.85rem;
+  color: #111827;
+  cursor: default;
+  word-break: break-word;
+}
+
+.todo-text.disabled {
+  color: #9ca3af;
+}
+
+/* 더블클릭 편집 힌트용 */
+.todo-text:not(.disabled):hover {
+  background-color: #f9fafb;
+  border-radius: 6px;
+}
+
+/* 우측 아이콘 버튼 영역 */
+.todo-actions {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+/* 연필/휴지통 아이콘 버튼 */
+.icon-btn {
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  padding: 4px 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.icon-btn:hover:not(:disabled) {
+  background-color: #f3f4f6;
+}
+
+.icon-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* 스크롤바 스타일은 그대로 유지 */
+.todo-list::-webkit-scrollbar {
+  width: 6px;
+}
+.todo-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.todo-list::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 999px;
+}

@@ -1,0 +1,174 @@
+/* ============================
+   일정 팝업 - 왼쪽 리스트 (CalendarList)
+   ============================ */
+
+.sched-list {
+  padding: 16px 18px;
+  border-right: 1px solid #e5e7eb;
+  background: #f9fafb;
+  overflow-y: auto;
+}
+
+/* “내 일정” 타이틀 */
+.section-title {
+  margin: 0 0 10px 0;
+  font-weight: 800;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+/* ul / li 기본 여백 제거 */
+.sched-list ul {
+  margin: 0;
+  padding: 0;
+}
+.sched-list ul li {
+  list-style: none;
+}
+
+/* “요약+일정+시간순” 텍스트 */
+.sched-list .title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+/* 일정 한 개 타일 */
+.sched-item {
+  margin-top: 6px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  font-size: 13px;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+}
+
+.sched-item:hover {
+  background: #fefce8; /* 아주 연한 노랑 느낌 */
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.06);
+  transform: translateY(-0.5px);
+}
+
+/* 제목 줄 */
+.sched-item-main {
+  font-weight: 700;
+  color: #111827;
+}
+
+/* 장소/날짜/시간 메타 */
+.sched-item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* 삭제 버튼 영역 */
+.sched-item-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.sched-item-actions button {
+  margin-top: 0;
+  padding: 3px 10px;
+  font-size: 11px;
+  border-radius: 999px;
+  border: 1px solid #fecaca;
+  background: #fee2e2;
+  color: #b91c1c;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.sched-item-actions button:hover {
+  background: #fecaca;
+}
+
+/* 로딩 텍스트 */
+.sched-list .loading {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* 일정 한 개 타일 */
+.sched-item {
+  position: relative; /* ← 기준 잡아줌 */
+  margin-top: 6px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  font-size: 13px;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sched-item:hover {
+  background: #f9fafb;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+/* 제목 줄 */
+.sched-item-main {
+  font-weight: 700;
+  color: #111827;
+}
+
+/* 장소/날짜/시간 메타 */
+.sched-item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* 발신자 이름, 이메일 */
+.sched-item-meta-sender {
+  position: absolute;
+  top: 68px; /* ↓ 원하는 만큼 아래로 */
+  left: 6; /* 필요하면 조절 */
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12px;
+  color: #a5afbe;
+}
+
+/* 삭제 버튼 영역 */
+.sched-item-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.sched-item-actions button {
+  margin-top: 0;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #fef2f2;
+  color: #b91c1c;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.sched-item-actions button:hover {
+  background: #fee2e2;
+}

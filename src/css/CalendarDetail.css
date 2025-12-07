@@ -1,0 +1,162 @@
+/* ============================
+   DETAIL VIEW
+   ============================ */
+
+.detail-form {
+  padding: 18px 22px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* ============================
+   상단 날씨
+   ============================ */
+
+.detail-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-bottom: 18px;
+}
+
+.detail-weather {
+  font-weight: 700;
+  color: #111827;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* ============================
+   본문
+   ============================ */
+
+.detail-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail-label {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.detail-field {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail-box,
+.detail-notes,
+.detail-time {
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #111827;
+}
+
+.detail-datechip {
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #111827;
+}
+
+/* ============================
+   지도 토글 + 지도
+   ============================ */
+
+.detail-map-toggle {
+  width: 100%;
+  background: hsl(0, 0%, 95%);
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #d1d5db;
+  text-align: center;
+}
+
+.detail-map-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  width: 100%;
+
+  display: flex; /* 추가 */
+  justify-content: center; /* 추가 */
+}
+
+.detail-map-wrapper.open {
+  max-height: 350px;
+}
+
+.detail-map {
+  width: 90%; /* 전체 폭의 90%로 줄임 */
+  max-width: 600px; /* 너무 커지지 않도록 제한 */
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+
+  margin: 12px auto; /* 가로 가운데 정렬 */
+  display: block;
+}
+
+/* ============================
+   수정 버튼
+   ============================ */
+
+.detail-edit-btn {
+  align-self: flex-end; /* 오른쪽 정렬 */
+  margin-top: 10px;
+  padding: 10px 17px; /* 크기 조금 줄임 */
+  border-radius: 8px;
+  background: #4f46e5;
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.detail-edit-btn:hover {
+  background: #4338ca;
+}
+
+.detail-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  width: 100%;
+  height: 100%;
+
+  color: #9ca3af; /* 연회색 */
+  font-size: 18px; /* 글씨 크게 */
+  font-weight: 600;
+
+  padding: 20px 0;
+}
+
+/* ============================
+   반응형
+   ============================ */
+
+@media (max-width: 480px) {
+  .detail-map {
+    height: 200px;
+  }
+}

@@ -1,0 +1,54 @@
+/* ============================
+   툴바 (달력 카드 상단 버튼 영역)
+   ============================ */
+
+.cal-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.btn-ai,
+.btn-mail,
+.btn-today {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #111827;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-ai:hover,
+.btn-mail:hover,
+.btn-today:hover {
+  background: #f3f4f6;
+}
+
+.mini-msg {
+  margin-left: auto;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #111827;
+}
+
+.mini-msg.success {
+  border-color: #10b98133;
+}
+
+.mini-msg.error {
+  border-color: #ef444433;
+  color: #b91c1c;
+}
+
+.ai-error {
+  color: #b91c1c;
+  font-weight: 700;
+}

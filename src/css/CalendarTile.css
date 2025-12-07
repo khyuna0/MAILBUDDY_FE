@@ -1,0 +1,157 @@
+/* ============================
+   타일 오버레이 전체
+   ============================ */
+.tile-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none; /* 기본 달력 클릭 유지 */
+  overflow: hidden; /* 요소가 타일 밖으로 절대 나가지 않도록 */
+}
+
+/* 내부 요소만 클릭 가능 */
+.tile-events,
+.tile-badges,
+.tile-birth-icon {
+  pointer-events: auto;
+}
+
+/* ============================
+   생일 아이콘 (날짜 좌측 상단)
+   ============================ */
+.tile-birth-icon {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: 3;
+  font-size: 14px;
+}
+
+/* ============================
+   뱃지 (날짜 우측 상단)
+   ============================ */
+.tile-badges {
+  position: absolute;
+  top: 5px; /* 날짜 높이에 딱 맞게 */
+  right: 4px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  z-index: 3;
+}
+
+.badge {
+  min-width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.badge-summary {
+  background: #4f46e5;
+}
+
+.badge-local {
+  background: #ec4899;
+}
+
+/* ============================
+   일정 미리보기 (날짜 아래 고정)
+   ============================ */
+.tile-events {
+  position: absolute;
+  top: 45px; /* 날짜 아래로 고정 */
+  left: 4px;
+  right: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  z-index: 2;
+  overflow: hidden;
+  max-height: calc(100% - 34px); /* 타일 아래까지 넘치지 않도록 */
+}
+
+/* 미리보기 아이템 */
+.tile-event-item {
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* summary 일정 */
+.event-summary {
+  background: #e2e8ff;
+  color: #3730a3;
+}
+
+/* local 일정 */
+.event-local {
+  background: #ffe4e6;
+  color: #9d174d;
+}
+
+/* ============================
+   반응형 (타일 크기 변화 대응)
+   ============================ */
+@media (max-width: 1024px) {
+  .tile-event-item {
+    font-size: 10px;
+    padding: 2px 5px;
+  }
+  .tile-badges {
+    top: 3px;
+    right: 3px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tile-events {
+    top: 26px;
+    gap: 2px;
+  }
+  .tile-event-item {
+    font-size: 9px;
+  }
+  .badge {
+    min-width: 14px;
+    height: 14px;
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tile-events {
+    top: 24px;
+  }
+  .tile-event-item {
+    font-size: 8px;
+  }
+  .badge {
+    min-width: 12px;
+    height: 12px;
+    font-size: 8px;
+  }
+}
+
+.tile-more {
+  position: absolute;
+  top: 33px;
+  left: 0px;
+  color: rgba(39, 39, 39, 0.5); /* 조금 진한 회색 텍스트 */
+  padding: 1px 6px;
+  font-size: 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  z-index: 10;
+  pointer-events: none;
+  line-height: 1;
+}

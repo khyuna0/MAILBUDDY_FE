@@ -1,0 +1,112 @@
+.mb-faq-page {
+  min-height: calc(100vh - 120px); /* 헤더/푸터 제외 높이 정도로 */
+  padding: 40px 16px 60px;
+  background-color: #f9fafb;
+  display: flex;
+  justify-content: center;
+}
+
+.mb-faq-inner {
+  width: 100%;
+  max-width: 800px;
+}
+
+.mb-faq-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.mb-faq-header p {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.mb-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 각 FAQ 박스 */
+.mb-faq-item {
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+/* summary 기본 화살표 제거(브라우저 별 차이 있음) */
+.mb-faq-item summary {
+  list-style: none;
+}
+
+.mb-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+/* 질문 줄 */
+.mb-faq-question {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Q, A 표시 */
+.mb-faq-q,
+.mb-faq-a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  background-color: #111827;
+  color: #ffffff;
+}
+
+/* 답변 영역 */
+.mb-faq-answer {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+/* 열렸을 때 강조 효과 */
+.mb-faq-item[open] {
+  border-color: #111827;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.06);
+}
+
+/* summary hover */
+.mb-faq-item summary:hover {
+  background-color: #f9fafb;
+  border-radius: 8px;
+}
+
+/* 반응형 (모바일) */
+@media (max-width: 640px) {
+  .mb-faq-page {
+    padding: 24px 12px 40px;
+  }
+
+  .mb-faq-header h1 {
+    font-size: 20px;
+  }
+
+  .mb-faq-item {
+    padding: 10px 12px;
+  }
+}

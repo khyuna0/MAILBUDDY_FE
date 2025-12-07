@@ -1,0 +1,174 @@
+/* src/pages/MyPage.css */
+
+/* 1) 전역 박스사이징 리셋 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --bg: #ffffff;
+  --card-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  --accent: #111827; /* 버튼/포커스 */
+}
+
+.mypage-container {
+  max-width: 650px; /* 요청값 유지 */
+  margin: 0 auto;
+  padding: 16px 12px 32px;
+  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+  color: var(--text);
+}
+
+.mypage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.mypage-header h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: -0.2px;
+  color: var(--text);
+}
+
+/* 카드 */
+.mypage-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  padding: 20px;
+  overflow: hidden; /* 라운드 밖으로 내용 비치지 않게 */
+}
+
+/* 라벨-인풋 그리드 */
+.mypage-grid {
+  display: grid;
+  grid-template-columns: 140px 1fr; /* 라벨 / 인풋 */
+  gap: 12px 14px;
+  align-items: center;
+}
+
+/* 2) Grid 아이템이 셀 바깥으로 늘어나지 않게 */
+.mypage-grid > * {
+  min-width: 0;
+}
+
+/* 라벨 */
+.mypage-grid .label {
+  font-weight: 800;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* 인풋 공통 */
+.mypage-grid input[type="text"],
+.mypage-grid input[type="password"] {
+  width: 100%;
+  max-width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease,
+    background 0.15s ease;
+  box-sizing: border-box; /* 3) 핵심: 패딩/보더 포함하여 100% 안에서 계산 */
+}
+
+.mypage-grid input::placeholder {
+  color: #9ca3af;
+}
+
+.mypage-grid input:focus {
+  border-color: #c7c9ce;
+  box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.08);
+}
+
+/* 읽기 전용(아이디 등) */
+.ro-input {
+  background: #f9fafb !important;
+  color: #4b5563 !important;
+  border-color: #eef0f3 !important;
+  cursor: not-allowed;
+}
+
+/* 에러 메시지 */
+.error-message {
+  background: transparent !important;
+  border: 1px solid #f7cbcb;
+  border-radius: 10px;
+  box-shadow: none !important;
+  padding: 5px;
+  color: #f04545;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 8px 0 12px;
+  text-align: center;
+}
+
+/* 제출 버튼 */
+.submit-btn {
+  margin-top: 14px;
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-weight: 800;
+  font-size: 15px;
+  background: --accent;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.02s ease;
+}
+
+.submit-btn:hover {
+  opacity: 0.94;
+}
+.submit-btn:active {
+  transform: translateY(1px);
+}
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 로딩 텍스트 */
+.loading {
+  padding: 12px;
+  color: #6b7280;
+}
+
+/* 반응형 */
+@media (max-width: 720px) {
+  .mypage-grid {
+    grid-template-columns: 1fr;
+  }
+  .mypage-grid .label {
+    margin-top: 6px;
+  }
+  .mypage-card {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .mypage-container {
+    padding: 12px 10px 24px;
+  }
+  .mypage-header h2 {
+    font-size: 1.2rem;
+  }
+}

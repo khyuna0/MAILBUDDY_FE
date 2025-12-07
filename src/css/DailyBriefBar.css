@@ -1,0 +1,95 @@
+.mb-brief-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  font-size: 0.9rem;
+  color: #111827;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mb-brief-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.mb-brief-text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.mb-brief-main {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mb-brief-sub {
+  font-size: 0.85rem;
+  color: #6b7280;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mb-brief-loading {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* =========================
+   반응형: 태블릿 이하
+   ========================= */
+@media (max-width: 768px) {
+  .mb-brief-bar {
+    padding: 8px 12px;
+    gap: 8px;
+    font-size: 0.85rem;
+  }
+
+  .mb-brief-icon {
+    font-size: 1rem;
+  }
+
+  .mb-brief-main {
+    font-size: 0.9rem;
+  }
+
+  .mb-brief-sub {
+    font-size: 0.8rem;
+  }
+}
+
+/* =========================
+   반응형: 작은 모바일 (한 줄에 안 담길 때)
+   ========================= */
+@media (max-width: 480px) {
+  .mb-brief-bar {
+    align-items: flex-start;
+    border-radius: 14px; /* 너무 길쭉한 알약 느낌 줄이기 */
+  }
+
+  .mb-brief-text-wrap {
+    width: 100%;
+  }
+
+  /* 모바일에서는 줄바꿈 허용해서 내용 최대한 보여주기 */
+  .mb-brief-main,
+  .mb-brief-sub {
+    white-space: normal;
+  }
+
+  /* 로딩 텍스트는 모바일에서는 숨겨도 무방 */
+  .mb-brief-loading {
+    display: none;
+  }
+}

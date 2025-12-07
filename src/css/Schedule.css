@@ -1,0 +1,514 @@
+/* ============================
+   Layout: 페이지 / 좌우 카드
+   ============================ */
+
+/* 전체 페이지 래퍼 - 넓게 */
+.calpage-wrap {
+  max-width: min(1600px, 98vw);
+  margin: 0 auto 15px auto;
+  padding: 10px 10px;
+}
+
+/* 양쪽 카드 공통 */
+.cal-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  padding: 12px;
+}
+
+/* 왼쪽(달력) 카드 */
+.cal-left-card {
+  padding: 10px;
+  display: flex; /* 안쪽 컨텐츠가 카드 높이를 채우도록 */
+  flex-direction: column; /* (달력 + 툴바 등) */
+}
+
+/* 오른쪽 카드 – 예전 버전: 단일 카드(.cal-right-card) 기준 */
+.cal-right-card {
+  min-height: 520px;
+  width: 330px;
+  max-width: 380px;
+  border-bottom: none !important;
+  justify-self: start;
+  overflow: auto; /* 오른쪽 카드 안에서만 스크롤 */
+}
+
+.cal-right-column .cal-card {
+  min-height: 0;
+  display: flex; /*  내부에서 flex 사용 (Todo/Memo 카드 안 스크롤용) */
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ============================
+   React Calendar base 스타일
+   ============================ */
+
+.react-calendar {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+}
+
+/* 상단 네비게이션: 더 크고 선명하게 */
+.react-calendar__navigation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.react-calendar__navigation button {
+  min-width: 50px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 1.12rem;
+  color: #0f172a;
+}
+
+.react-calendar__navigation button:hover {
+  background: #f3f4f6;
+}
+
+/* 요일 헤더 */
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  font-size: 12px;
+  color: #94a3b8;
+  text-transform: none;
+}
+
+.react-calendar__month-view__weekdays abbr[title] {
+  text-decoration: none;
+}
+
+/* 날짜 숫자를 위로 조금 올려서, 뱃지/미리보기와 충돌 방지 */
+.react-calendar__tile abbr {
+  transform: translateY(-20px);
+  display: inline-block;
+}
+
+/* 한 칸(날짜 타일) 크기 – 예전 버전과 동일하게 크게 */
+.react-calendar__tile {
+  position: relative;
+  height: 120px;
+  padding: 12px 12px 28px;
+  border-radius: 14px;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.react-calendar__tile:hover {
+  background: #e78f8f;
+}
+
+/* 클릭 순간 */
+.react-calendar__tile:active {
+  transform: scale(0.998);
+}
+
+/* 선택된 날짜: 연한 하늘/보라 톤 배경 */
+.react-calendar__tile--active {
+  background: #cfd7fa;
+  border-radius: 14px;
+  color: #111827;
+}
+
+/* 선택 + hover / focus 도 동일하게 */
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #cfd7fa;
+  border-radius: 14px;
+  color: #111827;
+}
+
+/* 오늘 날짜: 연한 핑크톤 */
+.react-calendar__tile--now {
+  background: #eecccc;
+  border-radius: 14px;
+  outline: none;
+}
+
+/* 오늘 + 선택됨: 핑크 유지 */
+.react-calendar__tile--now.react-calendar__tile--active,
+.react-calendar__tile--now.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--now.react-calendar__tile--active:enabled:focus {
+  background: #eecccc;
+  border-radius: 14px;
+}
+
+/* 이웃 월 날짜 흐리게 */
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #cbd5e1;
+}
+
+/* 날짜 타일 위 전체 클릭/오버레이용 */
+.tile-overlay {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  z-index: 1;
+}
+
+/* 좌하단: 요약 타이틀 미니 표시 영역 */
+.mini-titles {
+  position: absolute;
+  left: 6px;
+  bottom: 6px;
+  right: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #1f2937;
+  max-height: 40px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.mini-title-line {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.mini-title-more {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* 우하단 배지(카운트) */
+.badge-stack {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  z-index: 2;
+}
+
+.badge-count {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 6px;
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+  color: #fff;
+  user-select: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.badge-user {
+  background: #4f46e5; /* 인디고 */
+}
+
+.badge-google {
+  background: #4285f4; /* 구글 블루 */
+}
+
+/* ============================
+   일정 팝업 모달 (CalendarHearder + List/Detail/WriteForm)
+   ============================ */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  z-index: 9999; /* 네비바까지 완전히 덮음 */
+  pointer-events: auto; /* 밖 클릭 막기 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-panel {
+  width: 1100px; /* 고정 폭 */
+  height: 60vh; /* 고정 높이 */
+  max-height: none;
+  overflow: hidden; /* 패널 자체는 스크롤 없음 */
+  border-radius: 18px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 상단 날짜/버튼 줄 */
+.modal-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+/* 날짜 영역: 라벨 + 실제 날짜 */
+.date-title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.date-label {
+  font-size: 12px;
+  color: #9ca3af; /* 연한 회색 */
+  font-weight: 600;
+}
+
+.date-text {
+  font-size: 15px;
+  font-weight: 800;
+  color: #0f172a;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 상단 버튼 영역 */
+.topbar-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* 헤더 전용 버튼 스타일 */
+.topbar-btn {
+  min-width: 80px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #111827;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+}
+
+.topbar-btn:hover {
+  background: #c0c5cf;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+  transform: translateY(-0.5px);
+}
+
+/* 메인 액션(일정 추가) 버튼 */
+.topbar-btn-primary {
+  background: #dddff3;
+  color: #000000;
+}
+
+.topbar-btn-primary:hover {
+  background: rgb(200, 207, 241);
+  color: #111827;
+}
+
+/* 좁은 화면에서 버튼이 아래로 떨어지도록 */
+@media (max-width: 640px) {
+  .modal-topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .topbar-actions {
+    align-self: flex-end;
+  }
+}
+/* ============================
+   일정 팝업 본문 2열 레이아웃
+   ============================ */
+
+/* 내용 2열 레이아웃 : 왼쪽(리스트) / 오른쪽(디테일 or 폼) */
+.modal-2col {
+  flex: 1;
+  overflow-y: auto; /* 내부 스크롤 */
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  background: #f3f4f6;
+}
+
+/* 안쪽 카드 느낌 주기 위해 패딩 */
+.modal-2col > * {
+  background: #ffffff;
+}
+
+/* 왼쪽/오른쪽에 살짝 카드 느낌 */
+.modal-2col > .sched-list {
+  border-right: 1px solid #e5e7eb;
+}
+
+.modal-2col > .sched-form {
+  /* 오른쪽은 기본 .sched-form 스타일 사용 */
+}
+
+/* ===== 캘린더 카드: 빈 공간 줄이기 ===== */
+.cal-card.cal-left-card {
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 10px;
+}
+.cal-card {
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+.cal-body {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: start;
+}
+
+/* 오른쪽 전체 컬럼 */
+.cal-right-column {
+  display: flex;
+  flex-direction: column;
+  width: 330px;
+  max-width: 330px;
+  height: 100%; /* ★ 왼쪽 카드 높이만큼 세로로 꽉 차기 */
+}
+
+/* 반응형: 모바일에서는 위/아래로 배치 */
+@media (max-width: 768px) {
+  .modal-2col {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-2col > .sched-list {
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+}
+
+/* 좌우 레이아웃 */
+.cal-layout {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* 왼쪽 컬럼 (캘린더) */
+.cal-left-column {
+  flex: 2;
+  min-width: 0;
+}
+
+/* 왼쪽 캘린더 카드: 위→아래로 브리핑 바 + 캘린더 */
+.cal-left-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 브리핑 바를 카드 상단 오른쪽으로 정렬 */
+.cal-brief-row {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 1200px) {
+  .react-calendar__tile {
+    height: 108px;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* 캘린더 타일 살짝 낮게 */
+  .react-calendar__tile {
+    height: 96px;
+  }
+
+  /* 메인 레이아웃: 좌우에서 위/아래 스택으로 변경 */
+  .cal-layout {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cal-left-column,
+  .cal-right-column {
+    width: 100%;
+    max-width: none;
+  }
+
+  /* 오른쪽 카드들은 가로 꽉 차도록 */
+  .cal-right-card {
+    width: 100%;
+    max-width: none;
+    justify-self: stretch;
+  }
+
+  /* (혹시 cal-body를 쓰고 있다면 1열로) */
+  .cal-body {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 768px) {
+  /* 모달 높이 조금 더 넉넉하게 */
+  .modal-panel {
+    max-height: 90vh;
+  }
+
+  .modal-2col {
+    grid-template-columns: 1fr;
+  }
+
+  /* 일정 페이지 카드들 여백/높이 조정 */
+  .calpage-wrap {
+    padding: 10px 8px 16px;
+  }
+
+  .cal-card {
+    padding: 10px;
+  }
+
+  /* 오른쪽 카드들: 최소 높이 줄여서 스크롤 적게 */
+  .cal-right-card {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .calpage-wrap {
+    padding: 12px 8px 24px;
+  }
+
+  .react-calendar__tile {
+    height: 80px;
+    padding: 10px 10px 24px;
+  }
+
+  .badge-count {
+    min-width: 16px;
+    height: 16px;
+    font-size: 10px;
+    line-height: 16px;
+    padding: 0 4px;
+  }
+
+  .mini-titles {
+    font-size: 11px;
+    max-height: 34px;
+  }
+
+  /* 모바일에서는 좌우 여백, 간격 조금 더 줄이기 */
+  .cal-layout {
+    gap: 10px;
+  }
+
+  .cal-right-column {
+    gap: 8px;
+  }
+}

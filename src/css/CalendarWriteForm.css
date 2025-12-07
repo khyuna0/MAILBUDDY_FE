@@ -1,0 +1,112 @@
+/* ============================
+   WRITE FORM - prefix write-
+   기존 sched-form 구조 그대로 유지
+   ============================ */
+
+.write-form {
+  padding: 16px 20px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* form 내부 */
+.write-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 공통 입력 */
+.write-field input,
+.write-field textarea {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+/* 포커스 (보라 제거) */
+.write-field input:focus,
+.write-field textarea:focus {
+  border-color: #d1d5db;
+  box-shadow: 0 0 0 3px rgba(209, 213, 219, 0.4);
+  outline: none;
+}
+
+.write-label {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 4px;
+  font-weight: 600;
+  display: block;
+}
+
+.write-field-row > div {
+  flex: 1;
+}
+
+/* 날짜 input 박스 */
+.write-datebox {
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.write-datebox input {
+  border: none !important;
+  background: transparent;
+  padding: 0;
+  font-size: 14px;
+  width: 100%;
+}
+
+.write-datebox input:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* 버튼 담는 박스 */
+.write-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+/* 공통 버튼 */
+.write-actions button {
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  color: #111;
+}
+
+/* 저장/수정 */
+.write-btn-primary {
+  background: #4f46e5;
+  border-color: #4f46e5;
+  color: white;
+}
+
+.write-btn-primary:hover {
+  background: #4338ca;
+}
+
+/* 에러 텍스트 */
+.write-error {
+  color: #b91c1c;
+  font-size: 12px;
+  margin-top: -8px;
+}
