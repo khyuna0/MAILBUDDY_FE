@@ -1,4 +1,4 @@
-# Mail Buddy (Front-end)
+# Mail Buddy
 
 Gmail 등 메일함에 쌓인 약속·일정 정보를 AI가 자동으로 추출해 캘린더에 등록해주는
 개인 비서형 웹 서비스의 프론트엔드 저장소입니다.
