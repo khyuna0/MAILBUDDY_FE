@@ -2,7 +2,7 @@ import axios from "axios";
 import { getToken } from "./tokenHelper";
 
 const api = axios.create({
-  baseURL: "http://ec2-52-79-115-253.ap-northeast-2.compute.amazonaws.com:8888",
+  baseURL: "http://localhost:8888",
   withCredentials: true,
 });
 
